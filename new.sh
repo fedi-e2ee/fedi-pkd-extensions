@@ -5,8 +5,8 @@ basedir=$( dirname $( readlink -f ${BASH_SOURCE[0]} ) )
 
 echo "What is the name of your extension directory?"
 read -r newdir
-if [[ "$newdir" =~ /^[0-9a-z\-]{1,32}$ ]]; then
-  echo "Creating ext/{$newdir}"
+if [[ "${newdir}" =~ /^[0-9a-z\-]{1,32}$ ]]; then
+  echo "Creating ext/${newdir}"
   mkdir "${basedir}/ext/${newdir}"
 else
   echo "Invalid directory name"
@@ -28,7 +28,7 @@ cat << EOF > "${basedir}/ext/${newdir}/README.md"
 
 ## Registered Prefix
 
-$(newdir)
+${newdir}
 
 ## Input Validation Rules
 
@@ -40,7 +40,7 @@ TODO
 
 EOF
 
-cat << EOF >> "{$basedir}/README.md"
+cat << EOF >> "${basedir}/README.md"
 
 * [${newdir}](ext/${newdir})
 EOF
